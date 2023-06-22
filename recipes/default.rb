@@ -1,4 +1,4 @@
-if platform?('ubuntu') && node['platform_version'] >= '18.04'
+if (platform?('ubuntu') && node['platform_version'] >= '18.04') || node['dnsmasq']['disable_systemd_resolved']
   directory '/etc/systemd/resolved.conf.d'
 
   file 'Fix systemd-resolved conflict' do
